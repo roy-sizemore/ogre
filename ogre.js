@@ -315,7 +315,11 @@ function heroAttack() {
             console.log(`The gods shine upon ${hero.name}! The foul ogre takes ${heroDmg} points of deadly damage!`);
         } else if (heroToHit <= ogre.ac) {
             ogre.hp = ogre.hp - heroDmg;
+            if (heroDmg === 1) {
+                console.log(`${hero.name}'s ${hero.inventory[0]} barely catches the ogre's warty hide! He only does ${heroDmg} point of deadly damage to the ogre!`);
+            } else {
             console.log(`A hit! A fine hit! ${hero.name} has done ${heroDmg} points of deadly damage to the ogre!`);
+            }
         } else {
             console.log(`A curse on the ogre! ${hero.name} missed his chance.`);
         };
