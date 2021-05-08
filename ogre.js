@@ -2,7 +2,7 @@
 // Music
 const audio = new Audio('[LINK/TO/MUSIC]')
 
-// Hero Gear (Weapons, armor and items)
+// Hero Gear (Weapons, armor and items) - use inquirer to add user choice functionality
 const weaponArr = [
     'Dagger':,
         damage: Math.ceil(Math.random() * 4),
@@ -53,7 +53,7 @@ for (let i = 0; i < 3; i++) {
 
 // Fighter info
 let hero = {
-    name: "Polthrach",
+    name: 'Polthrach',
     level: 4,
     hp: 10,
     hpTotal: 10, // use current/max instead? (hero.hp = {current: 10, max: 10}) - will need to change all instances of hp(.hpTotal) to match
@@ -66,13 +66,25 @@ let hero = {
     iniBonus: 0
 };
 
-// Fighter Stats [str, dex, con, int, wis, cha]
+// Inquirer prompt to name character - not working
+// const inquirer = require('inquirer');
+// inquirer.prompt([
+//     {
+//         name: hero.name,
+//         message: 'What would you like to name your Fighter?',
+//         type: 'input'
+//     }
+// ]).then(hero => {
+//     modCharCreation();
+// });
+
+// Fighter stats [int, wis, cha, dex, con, str]
 const charStatArr = [];
 const charStatBonusArr = [0, 0, 0, 0, 0, 0];
 const statNameArr = [ 'Intelligence', 'Wisdom', 'Charisma', 'Dexterity', 'Constitution', 'Strungth'];
 const esb = Math.ceil(Math.random() * 100);
 
-function modCharCreation () {
+const modCharCreation = () => {
     let stat  = 0;
     const modArr = [];
 
@@ -92,7 +104,7 @@ for (let k = 0; k < 6; k++) {
 
 charStatArr.sort((a,b) => a - b);
 
-// Stat Bonuses or penalties
+// Fighter stat bonuses or penalties
 if (charStatArr[5] === 18) {
     if (esb === 100) {
         charStatBonusArr[5] = 3;
@@ -195,7 +207,7 @@ hero.ac = hero.ac + (hero.acMod + charStatBonusArr[3]);
 // Fighter THAC0
 hero.thac0 -= (charStatBonusArr[5] + hero.weaponBonus);
 
-// Log Fighter Stats
+// Log Fighter stats to the user
 if (charStatArr[5] >=18) {
     console.log(`${hero.name}'s ${statNameArr[5]} is phenomenal! His Exceptional Strungth roll is ${esb}! His bonus to hit is ${charStatBonusArr[5]} and his damage bonus is ${hero.excepStrDmgBonus}!`);
 } else if (charStatArr[5] >= 16) {
@@ -234,8 +246,8 @@ console.log('');
 sleep(5000);
 
 // Combat
-//// Combat Turn
-function sleep(milliseconds) { 
+// Combat: Turn
+const sleep = (milliseconds) => { 
     let timeStart = new Date().getTime(); 
     while (true) {
         let elapsedTime = new Date().getTime() - timeStart;
@@ -279,14 +291,14 @@ for (let n = 1; n < 10000; n++) {
     };
 };
 
-//////// Combat Attack - make heroAttack and ogreAttack all one function? Might not work w/Initiative....
-//////////// Combat heroAttack
-function heroAttack() {
+// Combat: Attack
+// Combat: heroAttack
+const heroAttack = () => {
     let heroRoll = Math.ceil(Math.random() * 20);
     let heroToHit = hero.thac0 - (hero.weaponBonus + hero.excepStrDmgBonus) - heroRoll;
     let heroDmg = (Math.ceil(Math.random() * 8)) + charStatBonusArr[5] + hero.weaponBonus + hero.excepStrDmgBonus;
 
-//////////////// Combat Hero PoMH - turn this into a button so the player has a choice
+// Combat: Hero PoMH - Turn this into a button so the player can decide when to use
     if (hero.hp <= hero.hpTotal / 2 && hero.inventory[3] === 'Potion of Minor Healing') {
         const hpRec = (Math.ceil(Math.random() * 4) + 1);
         hero.hp += hpRec;
@@ -330,8 +342,8 @@ function heroAttack() {
     sleep(3000);
 };
 
-//////////// Combat Ogre Attack
-function ogreAttack() {
+// Combat: Ogre Attack
+const ogreAttack = () => {
     let ogreRoll = Math.ceil(Math.random() * 20);
     let ogreToHit = ogre.thac0 - ogreRoll;
     let ogreDmg = (Math.ceil(Math.random() * 10));
@@ -360,7 +372,7 @@ function ogreAttack() {
     sleep(3000);
 };
 
-//// Combat End
+// Combat: End
 const ending = Math.ceil(Math.random() * 2);
 
 if (hero.hp <= 0) {
