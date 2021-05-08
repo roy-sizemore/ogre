@@ -1,0 +1,23 @@
+{
+  "name": "ogre",
+  "version": "1.0.0",
+  "description": "Ogre! is a JavaScript script where a warrior fights an ogre. It is based on 2e AD&amp;D rules. This was a first attempt at coding a project all on my own after completing Codecademy.",
+  "main": "ogre.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roy-sizemore/ogre.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roy-sizemore/ogre/issues"
+  },
+  "homepage": "https://github.com/roy-sizemore/ogre#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  }
+}
