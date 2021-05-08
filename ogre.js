@@ -1,8 +1,8 @@
 /*
-// Music
+// Music - Add sound effects and background music (if it's not too distracting/annoying)
 const audio = new Audio('[LINK/TO/MUSIC]')
 
-// Hero Gear (Weapons, armor and items) - use inquirer to add user choice functionality
+// Hero Gear (Weapons, armor and items) - use inquirer to add user choice functionality - tie to db to make this more flexible (add more options, etc.)
 const weaponArr = [
     'Dagger':,
         damage: Math.ceil(Math.random() * 4),
@@ -59,7 +59,7 @@ let hero = {
     hpTotal: 10, // use current/max instead? (hero.hp = {current: 10, max: 10}) - will need to change all instances of hp(.hpTotal) to match
     inventory: ['Sword', 'Shield', 'Field Plate Armor', 'Potion of Minor Healing'], // Weapons, armor and items will need to be objects w/name and mod values
     ac: 10,
-    acMod: -9, // mod value
+    acMod: -9, // mod value - acMod, thac0, weaponBonus will need to be adjustable based on user's selections
     thac0: 16, // mod value
     weaponBonus: 0, // mod value
     excepStrDmgBonus: 0,
