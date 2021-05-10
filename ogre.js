@@ -257,42 +257,6 @@ console.log('');
 sleep(5000);
 
 // Combat
-// Combat: Turn
-
-for (let n = 1; n < 10000; n++) {
-    let heroIni = Math.ceil(Math.random() * 10) + hero.iniBonus;
-    let ogreIni = Math.ceil(Math.random() * 10);
-
-    if (hero.hp <= 0 || ogre.hp <= 0) {
-        break;
-    };
-    console.log(`Turn ${n} has started! Will ${hero.name} prevail?`);
-    sleep(1000);
-    console.log(`${hero.name} has rolled ${heroIni} for his initiative! Is he quick enough to strike first this turn?`);
-    console.log('');
-    sleep(1000);
-
-    if (heroIni >= ogreIni) {
-        heroAttack();
-        if (ogre.hp <=0) {
-            break;
-        };
-        ogreAttack();
-        if (hero.hp <= 0) {
-            break;
-        };
-    } else {
-        ogreAttack();
-        if (hero.hp <= 0) {
-            break;
-        };
-        heroAttack();
-        if (ogre.hp <= 0) {
-            break;
-        };
-    };
-};
-
 // Combat: Attack
 // Combat: heroAttack
 const heroAttack = () => {
@@ -372,6 +336,41 @@ const ogreAttack = () => {
         console.log('');
     };
     sleep(3000);
+};
+
+// Combat: Turn
+for (let n = 1; n < 10000; n++) {
+    let heroIni = Math.ceil(Math.random() * 10) + hero.iniBonus;
+    let ogreIni = Math.ceil(Math.random() * 10);
+
+    if (hero.hp <= 0 || ogre.hp <= 0) {
+        break;
+    };
+    console.log(`Turn ${n} has started! Will ${hero.name} prevail?`);
+    sleep(1000);
+    console.log(`${hero.name} has rolled ${heroIni} for his initiative! Is he quick enough to strike first this turn?`);
+    console.log('');
+    sleep(1000);
+
+    if (heroIni >= ogreIni) {
+        heroAttack();
+        if (ogre.hp <=0) {
+            break;
+        };
+        ogreAttack();
+        if (hero.hp <= 0) {
+            break;
+        };
+    } else {
+        ogreAttack();
+        if (hero.hp <= 0) {
+            break;
+        };
+        heroAttack();
+        if (ogre.hp <= 0) {
+            break;
+        };
+    };
 };
 
 // Combat: End
