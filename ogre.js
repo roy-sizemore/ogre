@@ -78,6 +78,17 @@ let hero = {
 //     modCharCreation();
 // });
 
+// Sleep function to add pauses in the game's text to improve readability
+const sleep = (milliseconds) => { 
+    let timeStart = new Date().getTime(); 
+    while (true) {
+        let elapsedTime = new Date().getTime() - timeStart;
+        if (elapsedTime > milliseconds) {
+            break;
+        };
+    };
+};
+
 // Fighter stats [int, wis, cha, dex, con, str]
 const charStatArr = [];
 const charStatBonusArr = [0, 0, 0, 0, 0, 0];
@@ -247,15 +258,6 @@ sleep(5000);
 
 // Combat
 // Combat: Turn
-const sleep = (milliseconds) => { 
-    let timeStart = new Date().getTime(); 
-    while (true) {
-        let elapsedTime = new Date().getTime() - timeStart;
-        if (elapsedTime > milliseconds) {
-            break;
-        };
-    };
-};
 
 for (let n = 1; n < 10000; n++) {
     let heroIni = Math.ceil(Math.random() * 10) + hero.iniBonus;
